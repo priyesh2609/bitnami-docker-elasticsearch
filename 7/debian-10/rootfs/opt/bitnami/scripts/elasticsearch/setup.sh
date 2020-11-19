@@ -19,7 +19,10 @@ echo "--------------setup.sh"
 
 printenv
 
-ls /opt/bitnami/elasticsearch
+ls $ELASTICSEARCH_BASE_DIR
+ls $ELASTICSEARCH_VOLUME_DIR
+ls $ELASTICSEARCH_CONF_DIR
+
 
 # Ensure kernel settings are valid
 elasticsearch_validate_kernel
