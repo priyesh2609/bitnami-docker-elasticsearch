@@ -15,6 +15,8 @@ set -o pipefail
 # Load Elasticsearch environment variables
 eval "$(elasticsearch_env)"
 
+echo "setup.sh"
+
 # Ensure kernel settings are valid
 elasticsearch_validate_kernel
 # Ensure Elasticsearch environment variables settings are valid

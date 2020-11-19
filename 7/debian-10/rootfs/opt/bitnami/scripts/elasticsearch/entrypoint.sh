@@ -14,6 +14,8 @@ set -o pipefail
 # Load Elasticsearch environment variables
 eval "$(elasticsearch_env)"
 
+echo "entrypoint.sh"
+
 print_welcome_page
 
 if [[ "$*" = "/opt/bitnami/scripts/elasticsearch/run.sh" ]]; then

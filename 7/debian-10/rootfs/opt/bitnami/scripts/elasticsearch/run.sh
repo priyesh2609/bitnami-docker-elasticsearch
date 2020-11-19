@@ -14,6 +14,8 @@ set -o pipefail
 # Load Elasticsearch environment variables
 eval "$(elasticsearch_env)"
 
+echo "run.sh"
+
 # Constants
 EXEC=$(command -v elasticsearch)
 ARGS=("-p" "$ELASTICSEARCH_TMP_DIR/elasticsearch.pid" "-Epath.data=$ELASTICSEARCH_DATA_DIR")
