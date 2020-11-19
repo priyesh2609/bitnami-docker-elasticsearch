@@ -9,7 +9,7 @@
 # Load Elasticsearch environment variables
 eval "$(elasticsearch_env)"
 
-echo "postunpack.sh"
+echo "--------------postunpack.sh"
 
 for dir in "$ELASTICSEARCH_TMP_DIR" "$ELASTICSEARCH_DATA_DIR" "$ELASTICSEARCH_LOG_DIR" "${ELASTICSEARCH_BASE_DIR}/plugins" "${ELASTICSEARCH_BASE_DIR}/modules" "$ELASTICSEARCH_CONF_DIR" "$ELASTICSEARCH_VOLUME_DIR" "$ELASTICSEARCH_INITSCRIPTS_DIR" "$ELASTICSEARCH_MOUNTED_PLUGINS_DIR"; do
     ensure_dir_exists "$dir"

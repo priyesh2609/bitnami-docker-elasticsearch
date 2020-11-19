@@ -14,7 +14,7 @@ set -o pipefail
 # Load Elasticsearch environment variables
 eval "$(elasticsearch_env)"
 
-echo "run.sh"
+echo "--------------run.sh"
 
 # Constants
 EXEC=$(command -v elasticsearch)
