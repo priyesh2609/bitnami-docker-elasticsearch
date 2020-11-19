@@ -1,13 +1,10 @@
-version: '2'
+version: "2"
 
 services:
   elasticsearch:
-    image: 'docker.io/bitnami/elasticsearch:7-debian-10'
+    image: "devpriyesh2609/bitnami-elasticsearch:latest"
     ports:
-      - '9200:9200'
-      - '9300:9300'
+      - "9200:9200"
+      - "9300:9300"
     volumes:
-      - 'elasticsearch_data:/bitnami/elasticsearch/data'
-volumes:
-  elasticsearch_data:
-    driver: local
+      - "data:/bitnami/elasticsearch/data"
