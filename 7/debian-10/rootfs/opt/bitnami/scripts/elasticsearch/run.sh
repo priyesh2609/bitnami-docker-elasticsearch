@@ -26,7 +26,7 @@ export JAVA_HOME=/opt/bitnami/java
 
 # echo $ARGS
 
-service elasticsearch start
+sudo service elasticsearch start
 # info "** Starting Elasticsearch **"
 # if am_i_root; then
 #     exec gosu "$ELASTICSEARCH_DAEMON_USER" "$EXEC" "${ARGS[@]}"
