@@ -32,4 +32,4 @@ EXPOSE 9200 9300
 
 # USER 1001
 ENTRYPOINT [ "/opt/bitnami/scripts/elasticsearch/entrypoint.sh" ]
-CMD [ "sudo", "/opt/bitnami/scripts/elasticsearch/run.sh" ]
+CMD [ "su", "/opt/bitnami/scripts/elasticsearch/run.sh" ]

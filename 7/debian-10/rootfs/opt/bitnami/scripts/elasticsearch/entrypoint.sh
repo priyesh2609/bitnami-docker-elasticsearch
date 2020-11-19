@@ -24,5 +24,5 @@ if [[ "$*" = "/opt/bitnami/scripts/elasticsearch/run.sh" ]]; then
     info "** Elasticsearch setup finished! **"
 fi
 
-echo "$@"
+echo ""
 exec "$@"
