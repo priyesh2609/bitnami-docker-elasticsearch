@@ -22,5 +22,7 @@ CACHE_ROOT="/tmp/bitnami/pkg/cache"
 commercial_component_unpack() {
     wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
     echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-7.x.list
+    echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list
+    echo "deb-src http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list
     apt-get update && apt-get install elasticsearch
 }
