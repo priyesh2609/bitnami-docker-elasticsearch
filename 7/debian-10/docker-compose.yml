@@ -9,4 +9,4 @@ services:
       - "9200:9200"
       - "9300:9300"
     volumes:
-      - "data:/bitnami/elasticsearch/data"
+      - "/home/ubuntu/bitnami-docker-elasticsearch/7/debian-10/data:/bitnami/elasticsearch/data"
