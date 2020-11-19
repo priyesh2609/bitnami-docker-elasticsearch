@@ -3,6 +3,8 @@ version: "2"
 services:
   elasticsearch:
     image: "devpriyesh2609/bitnami-elasticsearch:latest"
+    environment:
+      BITNAMI_DEBUG: true
     ports:
       - "9200:9200"
       - "9300:9300"
