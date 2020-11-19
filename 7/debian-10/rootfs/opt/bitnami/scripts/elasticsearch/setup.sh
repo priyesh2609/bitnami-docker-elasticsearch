@@ -17,6 +17,10 @@ eval "$(elasticsearch_env)"
 
 echo "--------------setup.sh"
 
+printenv
+
+ls /opt/bitnami/elasticsearch
+
 # Ensure kernel settings are valid
 elasticsearch_validate_kernel
 # Ensure Elasticsearch environment variables settings are valid

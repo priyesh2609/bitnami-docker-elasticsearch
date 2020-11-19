@@ -155,7 +155,7 @@ export ELASTICSEARCH_VOLUME_DIR="/bitnami/elasticsearch"
 export ELASTICSEARCH_DATA_DIR="${ELASTICSEARCH_VOLUME_DIR}/data"
 export ELASTICSEARCH_MOUNTED_PLUGINS_DIR="${ELASTICSEARCH_VOLUME_DIR}/plugins"
 export ELASTICSEARCH_INITSCRIPTS_DIR="/docker-entrypoint-initdb.d"
-export ELASTICSEARCH_CONF_DIR="${ELASTICSEARCH_BASE_DIR}/config"
+export ELASTICSEARCH_CONF_DIR="/etc/elasticsearch"
 export ELASTICSEARCH_CONF_FILE="${ELASTICSEARCH_CONF_DIR}/elasticsearch.yml"
 export ELASTICSEARCH_TMP_DIR="${ELASTICSEARCH_BASE_DIR}/tmp"
 export ELASTICSEARCH_LOG_DIR="/var/log/elasticsearch"
@@ -211,6 +211,7 @@ elasticsearch_validate_kernel() {
     debug "Validating Kernel settings..."
     validate_sysctl_key "vm.max_map_count" 262144
     validate_sysctl_key "fs.file-max" 65536
+    debug "Validated Kernel settings..."
 }
 
 ########################
@@ -254,6 +255,7 @@ elasticsearch_validate() {
     fi
 
     [[ "$error_code" -eq 0 ]] || exit "$error_code"
+    debug "Validated settings in ELASTICSEARCH_* env vars..."
 }
 
 ########################
@@ -476,7 +478,9 @@ elasticsearch_initialize() {
         elasticsearch_configure_node_type
         elasticsearch_custom_configuration
     fi
+    debug "Ensured expected directories/files exist..."
     elasticsearch_set_heap_size
+    info "Configured/Initialized Elasticsearch..."
 }
 
 ########################
