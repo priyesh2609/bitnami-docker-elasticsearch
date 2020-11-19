@@ -18,6 +18,7 @@ RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "gosu" "1.12.0-2"
 RUN . /opt/bitnami/scripts/libcommercial.sh && commercial_component_unpack "elasticsearch"
 RUN apt-get update && apt-get upgrade -y && \
     rm -r /var/lib/apt/lists /var/cache/apt/archives
+RUN apt-get -y install sudo
 RUN chmod g+rwX /opt/bitnami
 
 COPY rootfs /
