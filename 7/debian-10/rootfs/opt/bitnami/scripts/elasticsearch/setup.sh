@@ -15,7 +15,7 @@ set -o pipefail
 # Load Elasticsearch environment variables
 eval "$(elasticsearch_env)"
 
-echo "--------------setup.sh"
+echo "Invoked setup.sh"
 
 printenv
 

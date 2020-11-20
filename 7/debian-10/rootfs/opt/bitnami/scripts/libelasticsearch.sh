@@ -474,6 +474,7 @@ elasticsearch_initialize() {
         elasticsearch_conf_set http.port "$ELASTICSEARCH_PORT_NUMBER"
         elasticsearch_conf_set path.data "$ELASTICSEARCH_DATA_DIR"
         elasticsearch_conf_set transport.tcp.port "$ELASTICSEARCH_NODE_PORT_NUMBER"
+        elasticsearch_conf_set xpack.security.enabled "true"
         elasticsearch_cluster_configuration
         elasticsearch_configure_node_type
         elasticsearch_custom_configuration
