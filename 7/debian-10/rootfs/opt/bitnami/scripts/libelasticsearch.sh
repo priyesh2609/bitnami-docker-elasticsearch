@@ -158,7 +158,7 @@ export ELASTICSEARCH_INITSCRIPTS_DIR="/docker-entrypoint-initdb.d"
 export ELASTICSEARCH_CONF_DIR="/etc/elasticsearch"
 export ELASTICSEARCH_CONF_FILE="${ELASTICSEARCH_CONF_DIR}/elasticsearch.yml"
 export ELASTICSEARCH_TMP_DIR="${ELASTICSEARCH_BASE_DIR}/tmp"
-export ELASTICSEARCH_LOG_DIR="/var/log/elasticsearch"
+export ELASTICSEARCH_LOG_DIR="${ELASTICSEARCH_BASE_DIR}/logs"
 export ELASTICSEARCH_PLUGINS_DIR="${ELASTICSEARCH_BASE_DIR}/plugins"
 export PATH="${ELASTICSEARCH_BASE_DIR}/bin:$PATH"
 
@@ -463,8 +463,11 @@ elasticsearch_initialize() {
     debug "Ensuring expected directories/files exist..."
     for dir in "$ELASTICSEARCH_TMP_DIR" "$ELASTICSEARCH_DATA_DIR" "$ELASTICSEARCH_LOG_DIR" "$ELASTICSEARCH_BASE_DIR/plugins" "$ELASTICSEARCH_BASE_DIR/modules" "$ELASTICSEARCH_CONF_DIR"; do
         ensure_dir_exists "$dir"
+        am_i_root && echo "I am root and trying to own $dir"
         am_i_root && chown -R "$ELASTICSEARCH_DAEMON_USER:$ELASTICSEARCH_DAEMON_GROUP" "$dir"
     done
+
+    rm -rf $ELASTICSEARCH_CONF_FILE
 
     if [[ -f "$ELASTICSEARCH_CONF_FILE" ]]; then
         info "Custom configuration file detected, using it..."
@@ -473,6 +476,7 @@ elasticsearch_initialize() {
         touch "$ELASTICSEARCH_CONF_FILE"
         elasticsearch_conf_set http.port "$ELASTICSEARCH_PORT_NUMBER"
         elasticsearch_conf_set path.data "$ELASTICSEARCH_DATA_DIR"
+        elasticsearch_conf_set path.logs "$ELASTICSEARCH_LOG_DIR"
         elasticsearch_conf_set transport.tcp.port "$ELASTICSEARCH_NODE_PORT_NUMBER"
         elasticsearch_conf_set xpack.security.enabled "true"
         elasticsearch_conf_set xpack.monitoring.collection.enabled "true"
