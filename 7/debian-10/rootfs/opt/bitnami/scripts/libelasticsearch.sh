@@ -463,7 +463,6 @@ elasticsearch_initialize() {
     debug "Ensuring expected directories/files exist..."
     for dir in "$ELASTICSEARCH_TMP_DIR" "$ELASTICSEARCH_DATA_DIR" "$ELASTICSEARCH_LOG_DIR" "$ELASTICSEARCH_BASE_DIR/plugins" "$ELASTICSEARCH_BASE_DIR/modules" "$ELASTICSEARCH_CONF_DIR"; do
         ensure_dir_exists "$dir"
-        am_i_root && echo "I am root and trying to own $dir"
         am_i_root && chown -R "$ELASTICSEARCH_DAEMON_USER:$ELASTICSEARCH_DAEMON_GROUP" "$dir"
     done
 
@@ -479,7 +478,6 @@ elasticsearch_initialize() {
         elasticsearch_conf_set path.logs "$ELASTICSEARCH_LOG_DIR"
         elasticsearch_conf_set transport.tcp.port "$ELASTICSEARCH_NODE_PORT_NUMBER"
         elasticsearch_conf_set xpack.security.enabled "true"
-        elasticsearch_conf_set xpack.monitoring.collection.enabled "true"
         elasticsearch_cluster_configuration
         elasticsearch_configure_node_type
         elasticsearch_custom_configuration
