@@ -20,7 +20,7 @@ print_welcome_page
 
 info Adding Elasticsearch to path
 
-$PATH="$PATH:/usr/share/elasticsearch/bin/"
+export PATH="$PATH:/usr/share/elasticsearch/bin/"
 
 echo $*
 
