@@ -18,23 +18,17 @@ echo "--------------run.sh"
 
 
 # Constants
-# EXEC=$(command -v elasticsearch)
-# debug "------------** Starting Elasticsearch **"
-# ARGS=("-p" "$ELASTICSEARCH_TMP_DIR/elasticsearch.pid" "-Epath.data=$ELASTICSEARCH_DATA_DIR")
-# [[ -z "${ELASTICSEARCH_EXTRA_FLAGS:-}" ]] || ARGS=("${ARGS[@]}" "${ELASTICSEARCH_EXTRA_FLAGS[@]}")
+EXEC=/usr/share/elasticsearch/bin/elasticsearch
+debug "------------** Starting Elasticsearch **"
+ARGS=("-p" "$ELASTICSEARCH_TMP_DIR/elasticsearch.pid" "-Epath.data=$ELASTICSEARCH_DATA_DIR")
+[[ -z "${ELASTICSEARCH_EXTRA_FLAGS:-}" ]] || ARGS=("${ARGS[@]}" "${ELASTICSEARCH_EXTRA_FLAGS[@]}")
 export JAVA_HOME=/opt/bitnami/java
 
-# echo $ARGS
+echo $ARGS
 
-echo "ELASTICSEARCH_BASE_DIR"
-ls /usr/share/elasticsearch/bin
-echo "ELASTICSEARCH_VOLUME_DIR"
-ls /usr/share/
-
-service elasticsearch start
-# info "** Starting Elasticsearch **"
-# if am_i_root; then
-#     exec gosu "$ELASTICSEARCH_DAEMON_USER" "$EXEC" "${ARGS[@]}"
-# else
-#     exec "$EXEC" "${ARGS[@]}"
-# fi
+info "** Starting Elasticsearch **"
+if am_i_root; then
+    exec gosu "$ELASTICSEARCH_DAEMON_USER" "$EXEC" "${ARGS[@]}"
+else
+    exec "$EXEC" "${ARGS[@]}"
+fi
