@@ -30,6 +30,6 @@ ENV BITNAMI_APP_NAME="elasticsearch" \
 EXPOSE 9200 9300
 
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
-USER 1001
+# USER 1001
 ENTRYPOINT [ "/opt/bitnami/scripts/elasticsearch/entrypoint.sh" ]
 CMD [ "su", "root", "/opt/bitnami/scripts/elasticsearch/run.sh" ]

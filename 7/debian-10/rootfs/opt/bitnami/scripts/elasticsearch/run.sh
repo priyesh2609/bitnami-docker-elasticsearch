@@ -26,9 +26,9 @@ export JAVA_HOME=/opt/bitnami/java
 
 echo $ARGS
 
-info "** Starting Elasticsearch **"
-if am_i_root; then
-    exec gosu "$ELASTICSEARCH_DAEMON_USER" "$EXEC" "${ARGS[@]}"
-else
-    exec "$EXEC" "${ARGS[@]}"
-fi
+# info "** Starting Elasticsearch **"
+# if am_i_root; then
+#     exec gosu "$ELASTICSEARCH_DAEMON_USER" "$EXEC" "${ARGS[@]}"
+# else
+#     exec "$EXEC" "${ARGS[@]}"
+# fi
