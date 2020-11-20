@@ -18,6 +18,10 @@ echo "Invoked entrypoint.sh"
 
 print_welcome_page
 
+info Adding Elasticsearch to path
+
+$PATH="$PATH:/usr/share/elasticsearch/bin/"
+
 echo $*
 
 if [[ "$*" = "su root /opt/bitnami/scripts/elasticsearch/run.sh" ]]; then
