@@ -20,7 +20,7 @@ print_welcome_page
 
 echo $*
 
-if [[ "$*" = "/opt/bitnami/scripts/elasticsearch/run.sh" ]]; then
+if [[ "$*" = "su root /opt/bitnami/scripts/elasticsearch/run.sh" ]]; then
     info "** Starting Elasticsearch setup **"
     /opt/bitnami/scripts/elasticsearch/setup.sh
     info "** Elasticsearch setup finished! **"
