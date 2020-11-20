@@ -26,6 +26,11 @@ export JAVA_HOME=/opt/bitnami/java
 
 # echo $ARGS
 
+echo "ELASTICSEARCH_BASE_DIR"
+ls /usr/share/elasticsearch/bin
+echo "ELASTICSEARCH_VOLUME_DIR"
+ls /usr/share/
+
 service elasticsearch start
 # info "** Starting Elasticsearch **"
 # if am_i_root; then
